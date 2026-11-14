@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111512">
+  <title>Direction — THE TOILET RATING</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./admin.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <header class="site-header wrap">
+    <a class="brand" href="./index.html"><span class="brand-mark">T<span>R</span></span><span class="brand-name">THE TOILET <b>RATING</b></span></a>
+    <a class="back-link" href="./index.html">← RETOUR AU SITE</a>
+  </header>
+  <main class="wrap admin-main">
+    <section class="admin-intro"><p class="eyebrow">ESPACE CONFIDENTIEL</p><h1>Le bureau<br><em>de la direction.</em></h1><p class="muted">Gestion du registre et supervision des performances.</p></section>
+
+    <section id="login-panel" class="panel login-panel">
+      <p class="eyebrow">ACCÈS RÉSERVÉ</p><h2>Connexion administrateur.</h2>
+      <form id="login-form">
+        <label class="field-label" for="email">ADRESSE E-MAIL</label>
+        <input id="email" type="email" autocomplete="username" required placeholder="direction@exemple.fr">
+        <label class="field-label" for="password">MOT DE PASSE</label>
+        <input id="password" type="password" autocomplete="current-password" required placeholder="••••••••••">
+        <button class="button button-gold" type="submit">OUVRIR LE REGISTRE ↗</button>
+        <p id="login-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="dashboard-top"><div><p class="eyebrow">TABLEAU DE BORD</p><h2>Vue d'ensemble.</h2></div><button id="logout-button" class="button button-outline">DÉCONNEXION</button></div>
+      <div class="stats-grid admin-stats">
+        <article class="stat-card"><span class="stat-label">PASSAGES</span><strong id="admin-total">—</strong></article>
+        <article class="stat-card"><span class="stat-label">NOTE MOYENNE</span><strong id="admin-average">—</strong></article>
+        <article class="stat-card"><span class="stat-label">PARTICIPANTS</span><strong id="admin-people">—</strong></article>
+      </div>
+      <section class="panel table-panel">
+        <div class="section-heading"><div><p class="eyebrow">REGISTRE COMPLET</p><h2>Tous les passages.</h2></div><button id="refresh-button" class="button button-outline">↻ ACTUALISER</button></div>
+        <p id="admin-message" class="form-message" role="status"></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Participant</th><th>Qualité</th><th>Confort</th><th>Rapidité</th><th>Expérience</th><th>Moyenne</th><th>Commentaire</th><th></th></tr></thead>
+            <tbody id="ratings-table"><tr><td colspan="9">Connectez-vous pour consulter le registre.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <p class="privacy-note">Les suppressions sont définitives. Ne conservez pas de commentaires contenant des informations personnelles.</p>
+    </section>
+    <footer class="site-footer"><div class="brand small-brand"><span class="brand-mark">T<span>R</span></span><span class="brand-name">THE TOILET <b>RATING</b></span></div><p>Accès réservé à la direction.</p><a href="./index.html">SITE PUBLIC ↗</a></footer>
+  </main>
+</body>
+</html>
