@@ -68,9 +68,6 @@ body{color:#fff}
   padding:9px 13px;background:#101827aa;color:#fff;
   font:700 11px Arial,sans-serif;
 }
-@media(prefers-reduced-motion:reduce){
-  #transition-screen{display:none!important}
-}
 
 
 /* ============================================================
@@ -182,10 +179,6 @@ body{color:#fff}
   #rating-screen .phone-ui input[type=range]{height:24px}
   #rating-screen .phone-ui .submit-button{min-height:48px;margin-top:12px}
 }
-@media(prefers-reduced-motion:reduce){
-  #rating-screen.zooming .scene-image{transition:none}
-  #rating-screen .phone-ui,#rating-screen.form-ready .phone-ui{transition:none;transform:none}
-}
 </style>
 </head>
 <body>
@@ -239,7 +232,6 @@ function showScreen(name){Object.values(screens).forEach(s=>s.classList.remove('
 const transitionScreen=document.getElementById('transition-screen');
 const transitionVideo=document.getElementById('scene-transition');
 const ratingScreen=document.getElementById('rating-screen');
-const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let transitionFallback,zoomStartTimer,formTimer;
 
 /* ---- Réglages du zoom -------------------------------------------------
@@ -270,7 +262,6 @@ function resetRating(){
 function playPhoneZoom(){
   resetRating();
   setupZoom();
-  if(reduceMotion.matches){ratingScreen.classList.add('zooming','form-ready');return;}
   zoomStartTimer=setTimeout(()=>{
     void ratingScreen.offsetWidth;                  // fige l'état de départ avant de lancer la transition
     ratingScreen.classList.add('zooming');
@@ -288,9 +279,6 @@ function finishTransition(){
 }
 function startTransition(){
   resetRating();
-  if(reduceMotion.matches){                         // sans animation : direct au formulaire
-    showScreen('rating');playPhoneZoom();return;
-  }
   Object.values(screens).forEach(s=>s.classList.remove('active'));
   transitionScreen.classList.add('active');
   transitionVideo.currentTime=0;
