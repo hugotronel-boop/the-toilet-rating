@@ -24,25 +24,6 @@ body{color:#fff}
 .cactus-hotspot{left:67%;top:13%;width:22%;height:17%;font-size:clamp(20px,6vw,30px);color:#fff;text-shadow:0 2px 8px #000;align-items:flex-start;padding-top:6px}
 .direction-hotspot{left:17%;top:46%;width:18%;height:12%;font-size:24px;color:#fff;text-shadow:0 2px 8px #000}
 .phone-screen{background:#101827}
-.phone-ui{position:absolute;left:19%;top:29.2%;width:62%;height:33.5%;overflow-y:auto;overflow-x:hidden;padding:8px 7px 7px;color:#172033;background:transparent;border:0;border-radius:0;scrollbar-width:thin;overscroll-behavior:contain}
-.phone-ui h1{font-size:clamp(13px,3.8vw,17px);line-height:1.05;margin:0 0 5px;color:#172033;font-weight:900}
-.phone-ui .mini-copy{font-size:8px;line-height:1.2;margin:0 0 6px;color:#475569}
-.phone-ui label.field-label{display:block;font-size:8px;color:#24344a;letter-spacing:.02em;margin:6px 0 3px}
-.phone-ui input[type=text],.phone-ui textarea{display:block;width:100%;font-size:16px;line-height:1.15;padding:4px;border:1px solid #cbd5e1;border-radius:4px;background:#fff;color:#172033;min-height:0;transform:scale(.62);transform-origin:top left;width:161%;margin-bottom:-8px}
-.phone-ui .field-hint,.phone-ui .privacy-note{font-size:6px;color:#64748b;margin:2px 0}
-.phone-ui .rating-list{margin-top:4px;padding-top:2px;border-color:#dbe3ed}
-.phone-ui .rating-row{padding:2px 0;border-color:#e2e8f0}
-.phone-ui .rating-title{display:flex;justify-content:space-between;font-size:7px;margin:0 0 1px;color:#172033}
-.phone-ui .rating-title output{font-size:7px;color:#17436a}
-.phone-ui input[type=range]{width:100%;height:12px;accent-color:#1d5b8d}
-.phone-ui .field-label .optional{font-size:6px;color:#64748b}
-.phone-ui textarea{height:30px;min-height:30px}
-.phone-ui .consent{display:flex;gap:3px;font-size:6px;line-height:1.2;color:#475569}
-.phone-ui .consent input{width:10px;height:10px;margin:0;flex:0 0 auto}
-.phone-ui .submit-button{width:100%;min-height:24px;margin-top:5px;padding:3px 5px;gap:3px;font-size:7px;letter-spacing:0;background:#17436a;color:#fff;border-radius:4px}
-.phone-ui .submit-button span{font-size:7px}
-.phone-ui .form-message{font-size:7px;min-height:8px;margin:3px 0;color:#172033}
-.phone-ui .privacy-note{display:none}
 .back-home{position:absolute;left:5%;top:4%;z-index:8;border:1px solid #fff8;background:#101827bb;color:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}
 .phone-back{position:absolute;left:5%;top:4%;z-index:8;border:1px solid #fff8;background:#101827bb;color:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}
 .explore-screen{overflow-y:auto;overflow-x:hidden;background:linear-gradient(180deg,#111d30,#0c1422);padding:env(safe-area-inset-top) 14px calc(22px + env(safe-area-inset-bottom));}
@@ -68,72 +49,7 @@ body{color:#fff}
 .leader-score,.review-top span{color:var(--gold)}
 .empty-state,.loading-line{color:#c2cfdf}
 .site-footer{border-top:1px solid #ffffff24;margin-top:18px;padding:18px 0;color:#c2cfdf;font-size:10px}
-@media(min-width:700px){.phone-ui{left:19%;top:29.2%;width:62%;height:33.5%}.explore-screen{padding-left:max(18px,calc((100vw - 680px)/2));padding-right:max(18px,calc((100vw - 680px)/2))}.content-grid{grid-template-columns:1fr 1fr}}
-
-/* Correctif du formulaire dans le téléphone : tailles réelles, aucun scale */
-.phone-ui{left:24.5%!important;top:30.5%!important;width:51%!important;height:35.5%!important;padding:9px 8px 10px!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important}
-.phone-ui *{box-sizing:border-box!important}
-.phone-ui h1{font-size:clamp(15px,4.1vw,19px)!important;line-height:1.1!important;margin:0 0 4px!important;color:#172033!important}
-.phone-ui .mini-copy{font-size:10px!important;line-height:1.25!important;margin:0 0 8px!important;color:#475569!important}
-.phone-ui label.field-label{display:block!important;font-size:10px!important;line-height:1.2!important;margin:7px 0 4px!important;color:#24344a!important;font-weight:800!important}
-.phone-ui input[type=text],.phone-ui textarea{appearance:none!important;-webkit-appearance:none!important;transform:none!important;transform-origin:initial!important;width:100%!important;max-width:100%!important;min-width:0!important;font-family:Arial,sans-serif!important;font-size:16px!important;line-height:1.25!important;padding:7px 8px!important;border:1px solid #b9c7d8!important;border-radius:6px!important;background:#fff!important;color:#172033!important;min-height:34px!important;margin:0!important;box-shadow:none!important}
-.phone-ui .field-hint{font-size:8px!important;line-height:1.2!important;color:#64748b!important;margin:3px 0!important}
-.phone-ui .rating-list{display:grid!important;gap:5px!important;margin:7px 0 3px!important;padding:7px 0 3px!important;border-top:1px solid #dbe3ed!important;border-bottom:1px solid #dbe3ed!important}
-.phone-ui .rating-row{display:block!important;padding:0!important;margin:0!important;border:0!important}
-.phone-ui .rating-title{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:4px!important;font-size:10px!important;line-height:1.2!important;margin:0 0 1px!important;color:#172033!important;font-weight:700!important}
-.phone-ui .rating-title label{font-size:10px!important;margin:0!important;color:#172033!important;font-weight:700!important}
-.phone-ui .rating-title output{font-size:10px!important;color:#17436a!important;font-weight:800!important;white-space:nowrap!important}
-.phone-ui input[type=range]{display:block!important;appearance:auto!important;-webkit-appearance:auto!important;width:100%!important;height:17px!important;margin:0!important;padding:0!important;accent-color:#1d5b8d!important;background:transparent!important}
-.phone-ui .field-label .optional{font-size:8px!important;color:#64748b!important}
-.phone-ui textarea{height:48px!important;min-height:48px!important;resize:vertical!important}
-.phone-ui .form-bottom{display:block!important;margin-top:7px!important}
-.phone-ui .consent{display:flex!important;align-items:flex-start!important;gap:5px!important;font-size:8px!important;line-height:1.25!important;color:#475569!important}
-.phone-ui .consent input{appearance:auto!important;-webkit-appearance:checkbox!important;flex:0 0 13px!important;width:13px!important;height:13px!important;min-height:13px!important;margin:0!important;padding:0!important}
-.phone-ui .submit-button{display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;width:100%!important;min-height:36px!important;margin:8px 0 0!important;padding:7px 6px!important;font-size:10px!important;line-height:1.15!important;font-weight:800!important;background:#17436a!important;color:#fff!important;border-radius:6px!important}
-.phone-ui .submit-button span{font-size:10px!important;line-height:1.15!important}
-.phone-ui .form-message{font-size:9px!important;line-height:1.25!important;min-height:0!important;margin:5px 0!important;color:#172033!important;overflow-wrap:anywhere!important}
-.phone-ui .privacy-note{display:none!important}
-@media(max-height:720px){.phone-ui{top:29.5%!important;height:38%!important;padding:6px 7px!important}.phone-ui .mini-copy{margin-bottom:5px!important}.phone-ui .rating-list{gap:3px!important;margin:5px 0 2px!important;padding:5px 0 2px!important}.phone-ui input[type=range]{height:14px!important}.phone-ui textarea{height:38px!important;min-height:38px!important}}
-
-
-/* Ajustement précis dans les limites de l'écran blanc du téléphone */
-.phone-ui{
-  left:28.2%!important;
-  top:28.4%!important;
-  width:43.6%!important;
-  height:37.2%!important;
-  padding:7px 6px 8px!important;
-  overflow-y:auto!important;
-  overflow-x:hidden!important;
-  border-radius:2px!important;
-}
-.phone-ui h1{font-size:clamp(13px,3.5vw,16px)!important;margin-bottom:3px!important}
-.phone-ui .mini-copy{font-size:8px!important;margin-bottom:5px!important}
-.phone-ui label.field-label{font-size:8px!important;margin:5px 0 3px!important}
-.phone-ui input[type=text],.phone-ui textarea{
-  width:100%!important;max-width:100%!important;min-width:0!important;
-  font-size:14px!important;min-height:29px!important;padding:5px 6px!important;
-}
-.phone-ui .field-hint{font-size:7px!important;margin:2px 0!important}
-.phone-ui .rating-list{gap:3px!important;margin:5px 0 2px!important;padding:5px 0 2px!important}
-.phone-ui .rating-title,.phone-ui .rating-title label{font-size:8px!important}
-.phone-ui .rating-title output{font-size:8px!important}
-.phone-ui input[type=range]{height:14px!important}
-.phone-ui .field-label .optional{font-size:7px!important}
-.phone-ui textarea{height:37px!important;min-height:37px!important}
-.phone-ui .form-bottom{margin-top:5px!important}
-.phone-ui .consent{font-size:7px!important;line-height:1.2!important;gap:4px!important}
-.phone-ui .consent input{flex-basis:11px!important;width:11px!important;height:11px!important;min-height:11px!important}
-.phone-ui .submit-button{min-height:30px!important;margin-top:6px!important;padding:5px!important;font-size:8px!important}
-.phone-ui .submit-button span{font-size:8px!important}
-.phone-ui .form-message{font-size:8px!important;margin:3px 0!important}
-@media(max-height:720px){
- .phone-ui{top:28.4%!important;height:37.2%!important;padding:5px!important}
- .phone-ui .rating-list{gap:2px!important;margin:3px 0 1px!important;padding:3px 0 1px!important}
- .phone-ui input[type=range]{height:12px!important}
- .phone-ui textarea{height:31px!important;min-height:31px!important}
-}
-
+@media(min-width:700px){.explore-screen{padding-left:max(18px,calc((100vw - 680px)/2));padding-right:max(18px,calc((100vw - 680px)/2))}.content-grid{grid-template-columns:1fr 1fr}}
 
 /* Transition plein écran entre l'accueil et le téléphone */
 #transition-screen{
@@ -157,135 +73,119 @@ body{color:#fff}
 }
 
 
-/* Après la vidéo : zoom dans l'écran du téléphone, formulaire en plein écran */
-.phone-screen.zoomed-mode{
-  background:#fff!important;
-  color:#172033!important;
+/* ============================================================
+   Zoom sur l'écran du téléphone, puis formulaire à la bonne taille
+   Étapes (pilotées en JS) :
+     1. la vidéo se termine -> on affiche l'image du téléphone
+     2. .zooming    -> l'image zoome jusqu'à ne montrer que le blanc de l'écran
+     3. .form-ready -> le formulaire (fond blanc) apparaît en plein écran
+   ============================================================ */
+#rating-screen.active{animation:none}              /* pas de clignotement après la vidéo */
+#rating-screen .scene-image{
+  transform-origin:var(--zoom-ox,50%) var(--zoom-oy,47%);
+  will-change:transform;
 }
-.phone-screen.zoomed-mode > .scene-image{display:none!important}
-.phone-screen.zoomed-mode .phone-ui{
-  position:fixed!important;
-  inset:0!important;
-  left:0!important;top:0!important;
-  width:100vw!important;height:100vh!important;height:100dvh!important;
-  max-width:none!important;
-  padding:calc(28px + env(safe-area-inset-top)) 22px calc(28px + env(safe-area-inset-bottom))!important;
-  margin:0!important;
-  overflow-x:hidden!important;overflow-y:auto!important;
-  background:#fff!important;color:#172033!important;
-  border:0!important;border-radius:0!important;
-  transform:scale(.58)!important;
-  transform-origin:center center!important;
-  opacity:.25!important;
-  animation:formZoomIn .68s cubic-bezier(.18,.78,.2,1) forwards!important;
-  -webkit-overflow-scrolling:touch!important;
-}
-@keyframes formZoomIn{
-  0%{transform:scale(.58);opacity:.25}
-  65%{transform:scale(1.025);opacity:1}
-  100%{transform:scale(1);opacity:1}
-}
-.phone-screen.zoomed-mode .phone-ui h1{
-  font-size:clamp(27px,7vw,36px)!important;line-height:1.08!important;
-  margin:0 0 8px!important;color:#172033!important;
-}
-.phone-screen.zoomed-mode .phone-ui .mini-copy{
-  font-size:14px!important;line-height:1.4!important;margin:0 0 24px!important;color:#64748b!important;
-}
-.phone-screen.zoomed-mode .phone-ui label.field-label{
-  font-size:12px!important;line-height:1.3!important;margin:18px 0 7px!important;
-  color:#24344a!important;letter-spacing:.04em!important;
-}
-.phone-screen.zoomed-mode .phone-ui input[type=text],
-.phone-screen.zoomed-mode .phone-ui textarea{
-  display:block!important;appearance:none!important;-webkit-appearance:none!important;
-  transform:none!important;transform-origin:initial!important;
-  width:100%!important;max-width:100%!important;min-width:0!important;
-  min-height:48px!important;height:auto!important;
-  margin:0!important;padding:12px 13px!important;
-  font:16px/1.35 Arial,sans-serif!important;
-  color:#172033!important;background:#f8fafc!important;
-  border:1px solid #cbd5e1!important;border-radius:10px!important;
-  box-shadow:none!important;
-}
-.phone-screen.zoomed-mode .phone-ui .field-hint{
-  font-size:11px!important;margin:6px 0 0!important;color:#64748b!important;
-}
-.phone-screen.zoomed-mode .phone-ui .rating-list{
-  display:grid!important;gap:13px!important;margin:18px 0 8px!important;
-  padding:15px 0 10px!important;border-top:1px solid #dbe3ed!important;
-  border-bottom:1px solid #dbe3ed!important;
-}
-.phone-screen.zoomed-mode .phone-ui .rating-row{
-  display:block!important;padding:0!important;margin:0!important;border:0!important;
-}
-.phone-screen.zoomed-mode .phone-ui .rating-title{
-  display:flex!important;align-items:center!important;justify-content:space-between!important;
-  gap:8px!important;font-size:14px!important;line-height:1.3!important;margin:0 0 5px!important;
-  color:#172033!important;
-}
-.phone-screen.zoomed-mode .phone-ui .rating-title label{
-  font-size:14px!important;margin:0!important;color:#172033!important;
-}
-.phone-screen.zoomed-mode .phone-ui .rating-title output{
-  font-size:14px!important;color:#17436a!important;font-weight:800!important;
-}
-.phone-screen.zoomed-mode .phone-ui input[type=range]{
-  display:block!important;width:100%!important;height:28px!important;
-  margin:0!important;padding:0!important;accent-color:#1d5b8d!important;
-}
-.phone-screen.zoomed-mode .phone-ui .field-label .optional{
-  font-size:10px!important;color:#64748b!important;
-}
-.phone-screen.zoomed-mode .phone-ui textarea{
-  min-height:100px!important;height:100px!important;resize:vertical!important;
-}
-.phone-screen.zoomed-mode .phone-ui .form-bottom{display:block!important;margin-top:17px!important}
-.phone-screen.zoomed-mode .phone-ui .consent{
-  display:flex!important;align-items:flex-start!important;gap:9px!important;
-  font-size:11px!important;line-height:1.4!important;color:#475569!important;
-}
-.phone-screen.zoomed-mode .phone-ui .consent input{
-  appearance:auto!important;-webkit-appearance:checkbox!important;
-  flex:0 0 17px!important;width:17px!important;height:17px!important;
-  min-height:17px!important;margin:0!important;padding:0!important;
-}
-.phone-screen.zoomed-mode .phone-ui .submit-button{
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  width:100%!important;min-height:52px!important;margin:18px 0 0!important;
-  padding:13px 16px!important;border:0!important;border-radius:11px!important;
-  background:#17436a!important;color:#fff!important;
-  font:800 14px/1.2 Arial,sans-serif!important;
-}
-.phone-screen.zoomed-mode .phone-ui .submit-button span{
-  font-size:14px!important;line-height:1.2!important;
-}
-.phone-screen.zoomed-mode .phone-ui .form-message{
-  font-size:12px!important;line-height:1.4!important;min-height:0!important;
-  margin:10px 0!important;color:#172033!important;
-}
-.phone-screen.zoomed-mode .phone-ui .privacy-note{display:block!important;font-size:10px!important;color:#64748b!important}
-.phone-screen.zoomed-mode .phone-back{
-  position:fixed!important;left:16px!important;top:calc(env(safe-area-inset-top) + 10px)!important;
-  background:#f1f5f9!important;color:#172033!important;border:1px solid #cbd5e1!important;
-  font-size:11px!important;z-index:20!important;
-}
-@media(min-width:700px){
- .phone-screen.zoomed-mode .phone-ui{
-   width:min(100vw,620px)!important;left:50%!important;right:auto!important;
-   transform:translateX(-50%) scale(.58)!important;
-   animation:formZoomDesktop .68s cubic-bezier(.18,.78,.2,1) forwards!important;
- }
-}
-@keyframes formZoomDesktop{
-  0%{transform:translateX(-50%) scale(.58);opacity:.25}
-  65%{transform:translateX(-50%) scale(1.025);opacity:1}
-  100%{transform:translateX(-50%) scale(1);opacity:1}
-}
-@media(prefers-reduced-motion:reduce){
- .phone-screen.zoomed-mode .phone-ui{animation:none!important;transform:none!important;opacity:1!important}
+#rating-screen.zooming .scene-image{
+  transform:translate(var(--zoom-tx,0%),var(--zoom-ty,3%)) scale(var(--zoom-scale,2.8));
+  transition:transform var(--zoom-ms,1250ms) cubic-bezier(.55,0,.2,1);
 }
 
+/* bouton retour : visible seulement avec le formulaire */
+#rating-screen .phone-back{
+  position:fixed;left:16px;top:calc(env(safe-area-inset-top) + 12px);z-index:20;
+  background:#f1f5f9;color:#172033;border:1px solid #cbd5e1;
+  opacity:0;pointer-events:none;transition:opacity .3s ease .15s;
+}
+#rating-screen.form-ready .phone-back{opacity:1;pointer-events:auto}
+
+/* le formulaire : plein écran, fond blanc, colonne centrée */
+#rating-screen .phone-ui{
+  position:absolute;inset:0;z-index:6;
+  background:#fff;color:#172033;
+  padding:calc(66px + env(safe-area-inset-top)) 22px calc(30px + env(safe-area-inset-bottom));
+  overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  opacity:0;visibility:hidden;transform:scale(.96);
+  transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s linear .45s;
+}
+#rating-screen.form-ready .phone-ui{
+  opacity:1;visibility:visible;transform:none;
+  transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s;
+}
+#rating-screen .phone-ui > *{width:100%;max-width:460px;margin-left:auto;margin-right:auto}
+#rating-screen .phone-ui *{box-sizing:border-box}
+
+#rating-screen .phone-ui h1{
+  font-size:clamp(26px,7.2vw,34px);line-height:1.1;margin:0 auto 6px;color:#172033;font-weight:900;
+}
+#rating-screen .phone-ui .mini-copy{
+  font-size:15px;line-height:1.4;margin:0 auto 18px;color:#64748b;
+}
+#rating-screen .phone-ui label.field-label{
+  display:block;font-size:12px;line-height:1.3;margin:16px 0 7px;
+  color:#24344a;font-weight:800;letter-spacing:.04em;
+}
+#rating-screen .phone-ui .field-label .optional{font-size:10px;color:#64748b;font-weight:700}
+#rating-screen .phone-ui input[type=text],
+#rating-screen .phone-ui textarea{
+  display:block;appearance:none;-webkit-appearance:none;
+  width:100%;max-width:100%;min-width:0;min-height:48px;margin:0;padding:12px 13px;
+  font:16px/1.35 Arial,sans-serif;color:#172033;background:#f8fafc;
+  border:1px solid #cbd5e1;border-radius:10px;box-shadow:none;transform:none;
+}
+#rating-screen .phone-ui input[type=text]:focus,
+#rating-screen .phone-ui textarea:focus{outline:2px solid #1d5b8d;outline-offset:1px;background:#fff}
+#rating-screen .phone-ui textarea{height:88px;min-height:88px;resize:none}
+#rating-screen .phone-ui .field-hint{font-size:12px;line-height:1.3;margin:6px 0 0;color:#64748b}
+
+#rating-screen .phone-ui .rating-list{
+  display:grid;gap:12px;margin:18px auto 4px;padding:14px 0 12px;
+  border-top:1px solid #dbe3ed;border-bottom:1px solid #dbe3ed;
+}
+#rating-screen .phone-ui .rating-row{display:block;padding:0;margin:0;border:0}
+#rating-screen .phone-ui .rating-title{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:15px;line-height:1.3;margin:0 0 4px;color:#172033;
+}
+#rating-screen .phone-ui .rating-title label{font-size:15px;margin:0;color:#172033;font-weight:700}
+#rating-screen .phone-ui .rating-title output{font-size:15px;color:#17436a;font-weight:800;white-space:nowrap}
+#rating-screen .phone-ui input[type=range]{
+  display:block;appearance:auto;-webkit-appearance:auto;
+  width:100%;height:28px;margin:0;padding:0;accent-color:#1d5b8d;background:transparent;
+}
+
+#rating-screen .phone-ui .form-bottom{display:block;margin-top:16px}
+#rating-screen .phone-ui .consent{
+  display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.4;color:#475569;
+}
+#rating-screen .phone-ui .consent input{
+  appearance:auto;-webkit-appearance:checkbox;flex:0 0 18px;width:18px;height:18px;min-height:18px;margin:1px 0 0;padding:0;
+}
+#rating-screen .phone-ui .submit-button{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;min-height:52px;margin:16px 0 0;padding:13px 16px;
+  border:0;border-radius:11px;background:#17436a;color:#fff;
+  font:800 14px/1.2 Arial,sans-serif;letter-spacing:.03em;cursor:pointer;
+}
+#rating-screen .phone-ui .submit-button span,
+#rating-screen .phone-ui .submit-button b{font-size:14px;line-height:1.2}
+#rating-screen .phone-ui .form-message{font-size:13px;line-height:1.4;min-height:0;margin:10px auto 0;color:#172033;overflow-wrap:anywhere}
+#rating-screen .phone-ui .privacy-note{display:block;font-size:11px;line-height:1.3;color:#64748b;margin:8px auto 0}
+
+/* petits écrans (hauteur) : on resserre pour limiter le défilement */
+@media(max-height:760px){
+  #rating-screen .phone-ui{padding-top:calc(58px + env(safe-area-inset-top))}
+  #rating-screen .phone-ui .mini-copy{margin-bottom:10px}
+  #rating-screen .phone-ui label.field-label{margin:11px 0 5px}
+  #rating-screen .phone-ui input[type=text],#rating-screen .phone-ui textarea{min-height:44px;padding:10px 12px}
+  #rating-screen .phone-ui textarea{height:64px;min-height:64px}
+  #rating-screen .phone-ui .rating-list{gap:7px;margin-top:12px;padding:10px 0 8px}
+  #rating-screen .phone-ui input[type=range]{height:24px}
+  #rating-screen .phone-ui .submit-button{min-height:48px;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #rating-screen.zooming .scene-image{transition:none}
+  #rating-screen .phone-ui,#rating-screen.form-ready .phone-ui{transition:none;transform:none}
+}
 </style>
 </head>
 <body>
@@ -298,7 +198,7 @@ body{color:#fff}
 
 
 <section id="transition-screen" aria-label="Transition vers le téléphone">
-  <video id="scene-transition" src="./assets/toilet-transition.MP4"
+  <video id="scene-transition" src="./assets/toilet-transition.mp4"
     playsinline webkit-playsinline muted preload="auto"
     aria-label="Animation de transition vers le téléphone"></video>
   <button id="skip-transition" type="button">Passer ↗</button>
@@ -338,15 +238,59 @@ function showScreen(name){Object.values(screens).forEach(s=>s.classList.remove('
 
 const transitionScreen=document.getElementById('transition-screen');
 const transitionVideo=document.getElementById('scene-transition');
-let transitionFallback;
+const ratingScreen=document.getElementById('rating-screen');
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+let transitionFallback,zoomStartTimer,formTimer;
+
+/* ---- Réglages du zoom -------------------------------------------------
+   Position de l'écran BLANC du téléphone dans toilet-phone.webp (en % de l'image).
+   Si le zoom ne tombe pas pile sur le blanc, ajuste ces 4 valeurs. */
+const PHONE_SCREEN={x:28.2,y:28.4,w:43.6,h:37.2};
+const ZOOM_MS=1250;          // durée du zoom
+const ZOOM_DELAY_MS=350;     // petite pause sur l'image avant de zoomer
+const FORM_AT=0.82;          // le formulaire apparaît à 82 % du zoom
+const ZOOM_MARGIN=1.04;      // léger sur-zoom pour ne jamais voir le bord du téléphone
+
+function setupZoom(){
+  const cx=PHONE_SCREEN.x+PHONE_SCREEN.w/2, cy=PHONE_SCREEN.y+PHONE_SCREEN.h/2;
+  const scale=Math.max(100/PHONE_SCREEN.w,100/PHONE_SCREEN.h)*ZOOM_MARGIN;
+  const st=ratingScreen.style;
+  st.setProperty('--zoom-ox',cx+'%');
+  st.setProperty('--zoom-oy',cy+'%');
+  st.setProperty('--zoom-tx',(50-cx)+'%');   // amène le centre de l'écran blanc au centre de l'écran
+  st.setProperty('--zoom-ty',(50-cy)+'%');
+  st.setProperty('--zoom-scale',scale.toFixed(3));
+  st.setProperty('--zoom-ms',ZOOM_MS+'ms');
+}
+function resetRating(){
+  clearTimeout(zoomStartTimer);clearTimeout(formTimer);
+  ratingScreen.classList.remove('zooming','form-ready');
+  const ui=ratingScreen.querySelector('.phone-ui');if(ui)ui.scrollTop=0;
+}
+function playPhoneZoom(){
+  resetRating();
+  setupZoom();
+  if(reduceMotion.matches){ratingScreen.classList.add('zooming','form-ready');return;}
+  zoomStartTimer=setTimeout(()=>{
+    void ratingScreen.offsetWidth;                  // fige l'état de départ avant de lancer la transition
+    ratingScreen.classList.add('zooming');
+    formTimer=setTimeout(()=>ratingScreen.classList.add('form-ready'),ZOOM_MS*FORM_AT);
+  },ZOOM_DELAY_MS);
+}
+
 function finishTransition(){
+  if(!transitionScreen.classList.contains('active'))return;   // évite les doubles déclenchements
   clearTimeout(transitionFallback);
   transitionVideo.pause();
   transitionScreen.classList.remove('active');
-  screens.rating.classList.add('zoomed-mode');
-  showScreen('rating');
+  showScreen('rating');       // l'image du téléphone apparaît...
+  playPhoneZoom();            // ...puis zoom sur l'écran blanc, puis formulaire
 }
 function startTransition(){
+  resetRating();
+  if(reduceMotion.matches){                         // sans animation : direct au formulaire
+    showScreen('rating');playPhoneZoom();return;
+  }
   Object.values(screens).forEach(s=>s.classList.remove('active'));
   transitionScreen.classList.add('active');
   transitionVideo.currentTime=0;
@@ -362,7 +306,7 @@ transitionVideo.addEventListener('ended',finishTransition);
 transitionVideo.addEventListener('error',finishTransition);
 
 document.getElementById('open-explore').addEventListener('click',()=>showScreen('explore'));
-document.getElementById('back-home').addEventListener('click',()=>showScreen('home'));
+document.getElementById('back-home').addEventListener('click',()=>{resetRating();showScreen('home');});
 document.getElementById('explore-back').addEventListener('click',()=>showScreen('home'));
 </script>
 </body></html>
