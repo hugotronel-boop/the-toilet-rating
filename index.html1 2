@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Toilet Ranking — ton avis compte.">
+<title>Toilet Ranking — Ton avis compte</title>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.js"></script>
+<style>
+:root{--ink:#101827;--gold:#ffdc82;--blue:#17436a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--ink);font-family:Arial,sans-serif;touch-action:pan-y}
+button,a,input,textarea{touch-action:manipulation}
+body{color:#fff}
+.screen{position:fixed;inset:0;display:none;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+.screen.active{display:block;animation:fadein .2s ease-out}
+@keyframes fadein{from{opacity:.7}to{opacity:1}}
+.scene-image{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.hotspot{position:absolute;display:flex;align-items:center;justify-content:center;border:0;background:transparent;color:transparent;padding:0;margin:0;box-shadow:none;outline:0;cursor:pointer;text-decoration:none;z-index:5}
+.hotspot:focus-visible{outline:2px dashed #fff;outline-offset:2px}
+.paper-hotspot{left:30%;top:78%;width:43%;height:17%;border-radius:50%}
+.cactus-hotspot{left:67%;top:13%;width:22%;height:17%;font-size:clamp(20px,6vw,30px);color:#fff;text-shadow:0 2px 8px #000;align-items:flex-start;padding-top:6px}
+.direction-hotspot{left:17%;top:46%;width:18%;height:12%;font-size:24px;color:#fff;text-shadow:0 2px 8px #000}
+.phone-screen{background:#101827}
+.phone-ui{position:absolute;left:19%;top:29.2%;width:62%;height:33.5%;overflow-y:auto;overflow-x:hidden;padding:8px 7px 7px;color:#172033;background:transparent;border:0;border-radius:0;scrollbar-width:thin;overscroll-behavior:contain}
+.phone-ui h1{font-size:clamp(13px,3.8vw,17px);line-height:1.05;margin:0 0 5px;color:#172033;font-weight:900}
+.phone-ui .mini-copy{font-size:8px;line-height:1.2;margin:0 0 6px;color:#475569}
+.phone-ui label.field-label{display:block;font-size:8px;color:#24344a;letter-spacing:.02em;margin:6px 0 3px}
+.phone-ui input[type=text],.phone-ui textarea{display:block;width:100%;font-size:16px;line-height:1.15;padding:4px;border:1px solid #cbd5e1;border-radius:4px;background:#fff;color:#172033;min-height:0;transform:scale(.62);transform-origin:top left;width:161%;margin-bottom:-8px}
+.phone-ui .field-hint,.phone-ui .privacy-note{font-size:6px;color:#64748b;margin:2px 0}
+.phone-ui .rating-list{margin-top:4px;padding-top:2px;border-color:#dbe3ed}
+.phone-ui .rating-row{padding:2px 0;border-color:#e2e8f0}
+.phone-ui .rating-title{display:flex;justify-content:space-between;font-size:7px;margin:0 0 1px;color:#172033}
+.phone-ui .rating-title output{font-size:7px;color:#17436a}
+.phone-ui input[type=range]{width:100%;height:12px;accent-color:#1d5b8d}
+.phone-ui .field-label .optional{font-size:6px;color:#64748b}
+.phone-ui textarea{height:30px;min-height:30px}
+.phone-ui .consent{display:flex;gap:3px;font-size:6px;line-height:1.2;color:#475569}
+.phone-ui .consent input{width:10px;height:10px;margin:0;flex:0 0 auto}
+.phone-ui .submit-button{width:100%;min-height:24px;margin-top:5px;padding:3px 5px;gap:3px;font-size:7px;letter-spacing:0;background:#17436a;color:#fff;border-radius:4px}
+.phone-ui .submit-button span{font-size:7px}
+.phone-ui .form-message{font-size:7px;min-height:8px;margin:3px 0;color:#172033}
+.phone-ui .privacy-note{display:none}
+.back-home{position:absolute;left:5%;top:4%;z-index:8;border:1px solid #fff8;background:#101827bb;color:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}
+.phone-back{position:absolute;left:5%;top:4%;z-index:8;border:1px solid #fff8;background:#101827bb;color:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}
+.explore-screen{overflow-y:auto;overflow-x:hidden;background:linear-gradient(180deg,#111d30,#0c1422);padding:env(safe-area-inset-top) 14px calc(22px + env(safe-area-inset-bottom));}
+.explore-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0 18px}
+.explore-head h1{font-size:22px;margin:0;color:var(--gold)}
+.explore-head button{border:1px solid #ffffff55;border-radius:30px;padding:8px 12px;background:#17263a;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.stat-card{min-height:95px;padding:12px 9px;border-radius:13px;background:#17263a;border:1px solid #ffffff20}
+.stat-label{display:block;font-size:8px;color:#b9c8da;letter-spacing:.08em}
+.stat-card strong{display:block;margin:8px 0;color:var(--gold);font-size:23px}
+.stat-card strong small{font-size:10px}
+.stat-foot{font-size:8px;color:#b9c8da}
+.game-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+.game-nav a{display:flex;min-height:44px;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px solid #ffffff2b;border-radius:12px;background:#17263a;color:#fff;font-size:10px;font-weight:800;text-decoration:none}
+.game-nav a:last-child{grid-column:1/-1}
+.content-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.panel{border-radius:15px;background:#17263a;border:1px solid #ffffff20;padding:16px;margin-bottom:12px}
+.section-heading h2{font-size:22px;color:#fff;margin:5px 0 10px}
+.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.14em}
+.muted,.small,.tiny-note{color:#c2cfdf}
+.leader-row,.review{border-color:#ffffff1c}
+.leader-info small,.review small{color:#aabbd0}
+.leader-score,.review-top span{color:var(--gold)}
+.empty-state,.loading-line{color:#c2cfdf}
+.site-footer{border-top:1px solid #ffffff24;margin-top:18px;padding:18px 0;color:#c2cfdf;font-size:10px}
+@media(min-width:700px){.phone-ui{left:19%;top:29.2%;width:62%;height:33.5%}.explore-screen{padding-left:max(18px,calc((100vw - 680px)/2));padding-right:max(18px,calc((100vw - 680px)/2))}.content-grid{grid-template-columns:1fr 1fr}}
+
+/* Correctif du formulaire dans le téléphone : tailles réelles, aucun scale */
+.phone-ui{left:24.5%!important;top:30.5%!important;width:51%!important;height:35.5%!important;padding:9px 8px 10px!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important}
+.phone-ui *{box-sizing:border-box!important}
+.phone-ui h1{font-size:clamp(15px,4.1vw,19px)!important;line-height:1.1!important;margin:0 0 4px!important;color:#172033!important}
+.phone-ui .mini-copy{font-size:10px!important;line-height:1.25!important;margin:0 0 8px!important;color:#475569!important}
+.phone-ui label.field-label{display:block!important;font-size:10px!important;line-height:1.2!important;margin:7px 0 4px!important;color:#24344a!important;font-weight:800!important}
+.phone-ui input[type=text],.phone-ui textarea{appearance:none!important;-webkit-appearance:none!important;transform:none!important;transform-origin:initial!important;width:100%!important;max-width:100%!important;min-width:0!important;font-family:Arial,sans-serif!important;font-size:16px!important;line-height:1.25!important;padding:7px 8px!important;border:1px solid #b9c7d8!important;border-radius:6px!important;background:#fff!important;color:#172033!important;min-height:34px!important;margin:0!important;box-shadow:none!important}
+.phone-ui .field-hint{font-size:8px!important;line-height:1.2!important;color:#64748b!important;margin:3px 0!important}
+.phone-ui .rating-list{display:grid!important;gap:5px!important;margin:7px 0 3px!important;padding:7px 0 3px!important;border-top:1px solid #dbe3ed!important;border-bottom:1px solid #dbe3ed!important}
+.phone-ui .rating-row{display:block!important;padding:0!important;margin:0!important;border:0!important}
+.phone-ui .rating-title{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:4px!important;font-size:10px!important;line-height:1.2!important;margin:0 0 1px!important;color:#172033!important;font-weight:700!important}
+.phone-ui .rating-title label{font-size:10px!important;margin:0!important;color:#172033!important;font-weight:700!important}
+.phone-ui .rating-title output{font-size:10px!important;color:#17436a!important;font-weight:800!important;white-space:nowrap!important}
+.phone-ui input[type=range]{display:block!important;appearance:auto!important;-webkit-appearance:auto!important;width:100%!important;height:17px!important;margin:0!important;padding:0!important;accent-color:#1d5b8d!important;background:transparent!important}
+.phone-ui .field-label .optional{font-size:8px!important;color:#64748b!important}
+.phone-ui textarea{height:48px!important;min-height:48px!important;resize:vertical!important}
+.phone-ui .form-bottom{display:block!important;margin-top:7px!important}
+.phone-ui .consent{display:flex!important;align-items:flex-start!important;gap:5px!important;font-size:8px!important;line-height:1.25!important;color:#475569!important}
+.phone-ui .consent input{appearance:auto!important;-webkit-appearance:checkbox!important;flex:0 0 13px!important;width:13px!important;height:13px!important;min-height:13px!important;margin:0!important;padding:0!important}
+.phone-ui .submit-button{display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;width:100%!important;min-height:36px!important;margin:8px 0 0!important;padding:7px 6px!important;font-size:10px!important;line-height:1.15!important;font-weight:800!important;background:#17436a!important;color:#fff!important;border-radius:6px!important}
+.phone-ui .submit-button span{font-size:10px!important;line-height:1.15!important}
+.phone-ui .form-message{font-size:9px!important;line-height:1.25!important;min-height:0!important;margin:5px 0!important;color:#172033!important;overflow-wrap:anywhere!important}
+.phone-ui .privacy-note{display:none!important}
+@media(max-height:720px){.phone-ui{top:29.5%!important;height:38%!important;padding:6px 7px!important}.phone-ui .mini-copy{margin-bottom:5px!important}.phone-ui .rating-list{gap:3px!important;margin:5px 0 2px!important;padding:5px 0 2px!important}.phone-ui input[type=range]{height:14px!important}.phone-ui textarea{height:38px!important;min-height:38px!important}}
+
+
+/* Ajustement précis dans les limites de l'écran blanc du téléphone */
+.phone-ui{
+  left:28.2%!important;
+  top:28.4%!important;
+  width:43.6%!important;
+  height:37.2%!important;
+  padding:7px 6px 8px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  border-radius:2px!important;
+}
+.phone-ui h1{font-size:clamp(13px,3.5vw,16px)!important;margin-bottom:3px!important}
+.phone-ui .mini-copy{font-size:8px!important;margin-bottom:5px!important}
+.phone-ui label.field-label{font-size:8px!important;margin:5px 0 3px!important}
+.phone-ui input[type=text],.phone-ui textarea{
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  font-size:14px!important;min-height:29px!important;padding:5px 6px!important;
+}
+.phone-ui .field-hint{font-size:7px!important;margin:2px 0!important}
+.phone-ui .rating-list{gap:3px!important;margin:5px 0 2px!important;padding:5px 0 2px!important}
+.phone-ui .rating-title,.phone-ui .rating-title label{font-size:8px!important}
+.phone-ui .rating-title output{font-size:8px!important}
+.phone-ui input[type=range]{height:14px!important}
+.phone-ui .field-label .optional{font-size:7px!important}
+.phone-ui textarea{height:37px!important;min-height:37px!important}
+.phone-ui .form-bottom{margin-top:5px!important}
+.phone-ui .consent{font-size:7px!important;line-height:1.2!important;gap:4px!important}
+.phone-ui .consent input{flex-basis:11px!important;width:11px!important;height:11px!important;min-height:11px!important}
+.phone-ui .submit-button{min-height:30px!important;margin-top:6px!important;padding:5px!important;font-size:8px!important}
+.phone-ui .submit-button span{font-size:8px!important}
+.phone-ui .form-message{font-size:8px!important;margin:3px 0!important}
+@media(max-height:720px){
+ .phone-ui{top:28.4%!important;height:37.2%!important;padding:5px!important}
+ .phone-ui .rating-list{gap:2px!important;margin:3px 0 1px!important;padding:3px 0 1px!important}
+ .phone-ui input[type=range]{height:12px!important}
+ .phone-ui textarea{height:31px!important;min-height:31px!important}
+}
+
+
+/* Transition plein écran entre l'accueil et le téléphone */
+#transition-screen{
+  position:fixed;inset:0;z-index:50;display:none;
+  width:100vw;height:100vh;height:100dvh;background:#000;
+  overflow:hidden;
+}
+#transition-screen.active{display:block}
+#transition-screen video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;background:#000;
+}
+#skip-transition{
+  position:absolute;right:16px;top:calc(env(safe-area-inset-top) + 14px);
+  z-index:2;border:1px solid #ffffff80;border-radius:999px;
+  padding:9px 13px;background:#101827aa;color:#fff;
+  font:700 11px Arial,sans-serif;
+}
+@media(prefers-reduced-motion:reduce){
+  #transition-screen{display:none!important}
+}
+
+
+/* Après la vidéo : zoom dans l'écran du téléphone, formulaire en plein écran */
+.phone-screen.zoomed-mode{
+  background:#fff!important;
+  color:#172033!important;
+}
+.phone-screen.zoomed-mode > .scene-image{display:none!important}
+.phone-screen.zoomed-mode .phone-ui{
+  position:fixed!important;
+  inset:0!important;
+  left:0!important;top:0!important;
+  width:100vw!important;height:100vh!important;height:100dvh!important;
+  max-width:none!important;
+  padding:calc(28px + env(safe-area-inset-top)) 22px calc(28px + env(safe-area-inset-bottom))!important;
+  margin:0!important;
+  overflow-x:hidden!important;overflow-y:auto!important;
+  background:#fff!important;color:#172033!important;
+  border:0!important;border-radius:0!important;
+  transform:scale(.58)!important;
+  transform-origin:center center!important;
+  opacity:.25!important;
+  animation:formZoomIn .68s cubic-bezier(.18,.78,.2,1) forwards!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+@keyframes formZoomIn{
+  0%{transform:scale(.58);opacity:.25}
+  65%{transform:scale(1.025);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+.phone-screen.zoomed-mode .phone-ui h1{
+  font-size:clamp(27px,7vw,36px)!important;line-height:1.08!important;
+  margin:0 0 8px!important;color:#172033!important;
+}
+.phone-screen.zoomed-mode .phone-ui .mini-copy{
+  font-size:14px!important;line-height:1.4!important;margin:0 0 24px!important;color:#64748b!important;
+}
+.phone-screen.zoomed-mode .phone-ui label.field-label{
+  font-size:12px!important;line-height:1.3!important;margin:18px 0 7px!important;
+  color:#24344a!important;letter-spacing:.04em!important;
+}
+.phone-screen.zoomed-mode .phone-ui input[type=text],
+.phone-screen.zoomed-mode .phone-ui textarea{
+  display:block!important;appearance:none!important;-webkit-appearance:none!important;
+  transform:none!important;transform-origin:initial!important;
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  min-height:48px!important;height:auto!important;
+  margin:0!important;padding:12px 13px!important;
+  font:16px/1.35 Arial,sans-serif!important;
+  color:#172033!important;background:#f8fafc!important;
+  border:1px solid #cbd5e1!important;border-radius:10px!important;
+  box-shadow:none!important;
+}
+.phone-screen.zoomed-mode .phone-ui .field-hint{
+  font-size:11px!important;margin:6px 0 0!important;color:#64748b!important;
+}
+.phone-screen.zoomed-mode .phone-ui .rating-list{
+  display:grid!important;gap:13px!important;margin:18px 0 8px!important;
+  padding:15px 0 10px!important;border-top:1px solid #dbe3ed!important;
+  border-bottom:1px solid #dbe3ed!important;
+}
+.phone-screen.zoomed-mode .phone-ui .rating-row{
+  display:block!important;padding:0!important;margin:0!important;border:0!important;
+}
+.phone-screen.zoomed-mode .phone-ui .rating-title{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:8px!important;font-size:14px!important;line-height:1.3!important;margin:0 0 5px!important;
+  color:#172033!important;
+}
+.phone-screen.zoomed-mode .phone-ui .rating-title label{
+  font-size:14px!important;margin:0!important;color:#172033!important;
+}
+.phone-screen.zoomed-mode .phone-ui .rating-title output{
+  font-size:14px!important;color:#17436a!important;font-weight:800!important;
+}
+.phone-screen.zoomed-mode .phone-ui input[type=range]{
+  display:block!important;width:100%!important;height:28px!important;
+  margin:0!important;padding:0!important;accent-color:#1d5b8d!important;
+}
+.phone-screen.zoomed-mode .phone-ui .field-label .optional{
+  font-size:10px!important;color:#64748b!important;
+}
+.phone-screen.zoomed-mode .phone-ui textarea{
+  min-height:100px!important;height:100px!important;resize:vertical!important;
+}
+.phone-screen.zoomed-mode .phone-ui .form-bottom{display:block!important;margin-top:17px!important}
+.phone-screen.zoomed-mode .phone-ui .consent{
+  display:flex!important;align-items:flex-start!important;gap:9px!important;
+  font-size:11px!important;line-height:1.4!important;color:#475569!important;
+}
+.phone-screen.zoomed-mode .phone-ui .consent input{
+  appearance:auto!important;-webkit-appearance:checkbox!important;
+  flex:0 0 17px!important;width:17px!important;height:17px!important;
+  min-height:17px!important;margin:0!important;padding:0!important;
+}
+.phone-screen.zoomed-mode .phone-ui .submit-button{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-height:52px!important;margin:18px 0 0!important;
+  padding:13px 16px!important;border:0!important;border-radius:11px!important;
+  background:#17436a!important;color:#fff!important;
+  font:800 14px/1.2 Arial,sans-serif!important;
+}
+.phone-screen.zoomed-mode .phone-ui .submit-button span{
+  font-size:14px!important;line-height:1.2!important;
+}
+.phone-screen.zoomed-mode .phone-ui .form-message{
+  font-size:12px!important;line-height:1.4!important;min-height:0!important;
+  margin:10px 0!important;color:#172033!important;
+}
+.phone-screen.zoomed-mode .phone-ui .privacy-note{display:block!important;font-size:10px!important;color:#64748b!important}
+.phone-screen.zoomed-mode .phone-back{
+  position:fixed!important;left:16px!important;top:calc(env(safe-area-inset-top) + 10px)!important;
+  background:#f1f5f9!important;color:#172033!important;border:1px solid #cbd5e1!important;
+  font-size:11px!important;z-index:20!important;
+}
+@media(min-width:700px){
+ .phone-screen.zoomed-mode .phone-ui{
+   width:min(100vw,620px)!important;left:50%!important;right:auto!important;
+   transform:translateX(-50%) scale(.58)!important;
+   animation:formZoomDesktop .68s cubic-bezier(.18,.78,.2,1) forwards!important;
+ }
+}
+@keyframes formZoomDesktop{
+  0%{transform:translateX(-50%) scale(.58);opacity:.25}
+  65%{transform:translateX(-50%) scale(1.025);opacity:1}
+  100%{transform:translateX(-50%) scale(1);opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+ .phone-screen.zoomed-mode .phone-ui{animation:none!important;transform:none!important;opacity:1!important}
+}
+
+</style>
+</head>
+<body>
+<section id="home-screen" class="screen active" aria-label="Accueil interactif">
+<img class="scene-image" src="./assets/toilet-home.webp" alt="Illustration pixel art du personnage dans les toilettes">
+<button class="hotspot paper-hotspot" id="open-rating" aria-label="Évaluer mon passage"></button>
+<button class="hotspot cactus-hotspot" id="open-explore" aria-label="Voir le classement et le livre d'or">💌</button>
+<a class="hotspot direction-hotspot" href="./admin.html" aria-label="Direction">•</a>
+</section>
+
+
+<section id="transition-screen" aria-label="Transition vers le téléphone">
+  <video id="scene-transition" src="./assets/toilet-transition.mp4"
+    playsinline webkit-playsinline muted preload="auto"
+    aria-label="Animation de transition vers le téléphone"></video>
+  <button id="skip-transition" type="button">Passer ↗</button>
+</section>
+
+<section id="rating-screen" class="screen phone-screen" aria-label="Votre verdict">
+<img class="scene-image" src="./assets/toilet-phone.webp" alt="Illustration pixel art du téléphone tenu dans les mains">
+<button type="button" class="phone-back" id="back-home">← RETOUR</button>
+<div class="phone-ui">
+<h1>Votre verdict.</h1>
+<p class="mini-copy">Quelques secondes pour entrer dans la légende.</p>
+<form id="rating-form"><label class="field-label" for="visitor-name">VOTRE NOM OU SURNOM *</label><input id="visitor-name" name="name" type="text" maxlength="24" minlength="2" placeholder="Ex. Tonton Michel" autocomplete="nickname" required><p class="field-hint">Ton surnom apparaîtra au classement.</p>
+<div class="rating-list"><div class="rating-row"><div class="rating-title"><label for="quality">💩 Qualité du passage</label><output id="quality-value">7/10</output></div><input id="quality" name="quality" type="range" min="0" max="10" value="7"></div><div class="rating-row"><div class="rating-title"><label for="comfort">🪑 Confort</label><output id="comfort-value">8/10</output></div><input id="comfort" name="comfort" type="range" min="0" max="10" value="8"></div><div class="rating-row"><div class="rating-title"><label for="speed">⏱️ Rapidité</label><output id="speed-value">7/10</output></div><input id="speed" name="speed" type="range" min="0" max="10" value="7"></div><div class="rating-row"><div class="rating-title"><label for="experience">👑 Expérience générale</label><output id="experience-value">8/10</output></div><input id="experience" name="experience" type="range" min="0" max="10" value="8"></div></div>
+<label class="field-label" for="visitor-comment">LE MOT DE LA FIN <span class="optional">FACULTATIF</span></label><textarea id="visitor-comment" name="comment" maxlength="240" rows="2" placeholder="Un moment inoubliable ?"></textarea><div class="form-bottom"><label class="consent"><input id="consent" type="checkbox" required><span>J'accepte l'affichage public de mon surnom, mes notes et mon commentaire.</span></label><button class="button button-gold submit-button" type="submit"><span>VALIDER MON VERDICT</span><b>↗</b></button></div><p id="form-message" class="form-message" role="status" aria-live="polite"></p><p class="privacy-note">Évite les noms complets et les informations personnelles.</p></form>
+</div>
+</section>
+
+<section id="explore-screen" class="screen explore-screen" aria-label="Classement et livre d'or">
+<div class="explore-head"><h1>Toilet Ranking</h1><button type="button" id="explore-back">← Accueil</button></div>
+<div class="stats-grid" aria-label="Statistiques générales">
+<article class="stat-card"><span class="stat-label">AVIS ENREGISTRÉS</span><strong id="total-visits">—</strong><span class="stat-foot">Le registre officiel</span></article>
+<article class="stat-card"><span class="stat-label">MOYENNE GÉNÉRALE</span><strong id="global-average">—<small>/10</small></strong><span class="stat-foot">Le verdict collectif</span></article>
+<article class="stat-card"><span class="stat-label">PARTICIPANTS</span><strong id="participant-count">—</strong><span class="stat-foot">Dans la légende</span></article>
+</div>
+<nav class="game-nav" aria-label="Navigation"><a href="#hall-of-fame">🏆 HALL OF FAME</a><a href="#guestbook">📖 LIVRE D'OR</a><a href="./admin.html">• DIRECTION •</a></nav>
+<div class="content-grid">
+<section class="panel leaderboard-panel" id="hall-of-fame"><div class="section-heading"><p class="eyebrow">LE PALMARÈS</p><h2>Hall of Fame 🏆</h2></div><p class="muted small">Tous les participants ont leur place au classement.</p><div id="leaderboard" class="leaderboard"><div class="loading-line">Chargement du palmarès…</div></div><p class="tiny-note">Classement basé sur la moyenne des quatre critères.</p></section>
+<section class="panel recent-panel" id="guestbook"><div class="section-heading"><p class="eyebrow">LE LIVRE D'OR</p><h2>Derniers avis</h2></div><div id="recent-reviews" class="reviews"><div class="loading-line">Ouverture du registre…</div></div></section>
+</div>
+<footer class="site-footer">Le sérieux de la mesure. Le plaisir du ridicule. <a href="./admin.html" style="color:#ffdc82">Accès Direction ↗</a></footer>
+</section>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+const screens={home:document.getElementById('home-screen'),rating:document.getElementById('rating-screen'),explore:document.getElementById('explore-screen')};
+function showScreen(name){Object.values(screens).forEach(s=>s.classList.remove('active'));screens[name].classList.add('active');if(name==='explore')screens.explore.scrollTop=0;}
+
+const transitionScreen=document.getElementById('transition-screen');
+const transitionVideo=document.getElementById('scene-transition');
+let transitionFallback;
+function finishTransition(){
+  clearTimeout(transitionFallback);
+  transitionVideo.pause();
+  transitionScreen.classList.remove('active');
+  screens.rating.classList.add('zoomed-mode');
+  showScreen('rating');
+}
+function startTransition(){
+  Object.values(screens).forEach(s=>s.classList.remove('active'));
+  transitionScreen.classList.add('active');
+  transitionVideo.currentTime=0;
+  transitionFallback=setTimeout(finishTransition,12000);
+  const playPromise=transitionVideo.play();
+  if(playPromise && typeof playPromise.catch==='function'){
+    playPromise.catch(()=>finishTransition());
+  }
+}
+document.getElementById('open-rating').addEventListener('click',startTransition);
+document.getElementById('skip-transition').addEventListener('click',finishTransition);
+transitionVideo.addEventListener('ended',finishTransition);
+transitionVideo.addEventListener('error',finishTransition);
+
+document.getElementById('open-explore').addEventListener('click',()=>showScreen('explore'));
+document.getElementById('back-home').addEventListener('click',()=>showScreen('home'));
+document.getElementById('explore-back').addEventListener('click',()=>showScreen('home'));
+</script>
+</body></html>
